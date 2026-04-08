@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-cursive: "Dancing Script", cursive;
+  
+  --color-brand-moss: #4B5E4D;
+  --color-brand-ivory: #F7F3E0;
+  --color-brand-gold: #D4AF37;
+  --color-brand-cream: #E8E2D2;
+  --color-brand-brown: #A67C52;
+  --color-brand-olive: #6B8E23;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+  }
+}
