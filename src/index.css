@@ -6,12 +6,12 @@
   --font-sans: "Montserrat", sans-serif;
   --font-cursive: "Dancing Script", cursive;
   
-  --color-brand-moss: #4B5E4D;
-  --color-brand-ivory: #F7F3E0;
-  --color-brand-gold: #D4AF37;
-  --color-brand-cream: #E8E2D2;
-  --color-brand-brown: #A67C52;
-  --color-brand-olive: #6B8E23;
+  --color-brand-moss: #3D4A3E;
+  --color-brand-ivory: #FDFBF7;
+  --color-brand-gold: #C5A059;
+  --color-brand-cream: #F5E6D3;
+  --color-brand-brown: #8B735B;
+  --color-brand-olive: #5A6344;
 }
 
 @layer base {

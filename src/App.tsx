@@ -48,9 +48,79 @@ const Navbar = () => (
 );
 
 const Hero = () => {
+  const Jar = ({ className }: { className?: string }) => (
+    <div className={`relative flex flex-col items-center ${className}`} style={{ perspective: '1200px' }}>
+      {/* The Jar Structure */}
+      <div className="relative w-40 h-32 sm:w-64 sm:h-52 flex flex-col items-center group transform-gpu transition-all duration-700 hover:scale-105">
+        {/* Lid (Matte White, Rounded Edges, Realistic Lighting) */}
+        <div className="w-full h-8 sm:h-12 bg-[#FDFDFD] rounded-t-[1.5rem] sm:rounded-t-[2.5rem] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.05),0_4px_15px_rgba(0,0,0,0.08)] border-b border-zinc-100 relative z-10">
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-zinc-100/50 rounded-t-[1.5rem] sm:rounded-t-[2.5rem]" />
+          {/* Top Highlight */}
+          <div className="absolute top-1 inset-x-6 h-1 bg-white/90 blur-[1.5px] rounded-full opacity-80" />
+          {/* Rim Detail */}
+          <div className="absolute bottom-0 inset-x-0 h-[1px] bg-zinc-200/50" />
+        </div>
+
+        {/* Body (Robust, Cylindrical, Matte White, 3D Lighting) */}
+        <div className="w-[98%] flex-grow bg-[#FDFDFD] rounded-b-[1.5rem] sm:rounded-b-[2.5rem] shadow-[inset_-12px_0_25px_rgba(0,0,0,0.03),inset_12px_0_25px_rgba(255,255,255,1),0_25px_50px_rgba(0,0,0,0.12)] border-x border-b border-zinc-100 relative overflow-hidden">
+          {/* Matte Texture Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+          
+          {/* Cylindrical Gradient for 3D Look */}
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-100/50 via-transparent to-zinc-200/40" />
+          
+          {/* Label (Pearl Grey, 60% coverage, High Realism) */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[65%] bg-gradient-to-b from-[#F3F4F6] to-[#E5E7EB] border-y border-zinc-300/50 flex flex-col p-2 sm:p-4 text-left overflow-hidden shadow-inner">
+            {/* Label Content */}
+            <div className="mb-1">
+              <h4 className="text-zinc-900 text-[6px] sm:text-[10px] font-serif font-bold uppercase leading-tight tracking-tight">
+                Mascarilla Facial
+              </h4>
+              <p className="text-zinc-500 text-[4px] sm:text-[7px] italic font-medium">
+                linea exfoliante - Lodo
+              </p>
+            </div>
+
+            {/* Description */}
+            <p className="text-zinc-700 text-[3.5px] sm:text-[6px] leading-[1.3] font-medium text-justify mb-1">
+              Limpia y absorbe el exceso de grasa. combate acné, barros y espinillas. Por su alta concentración mineral, regula el pH de la piel. Desmancha y revitaliza la piel, dejándola siempre bella.
+            </p>
+
+            {/* Footer of Label */}
+            <div className="mt-auto flex justify-between items-end">
+              <div className="flex flex-col">
+                <span className="font-cursive text-[#C5A059] text-[8px] sm:text-[14px] leading-none drop-shadow-sm">Termales</span>
+                <span className="text-[3px] sm:text-[5px] text-zinc-400 uppercase tracking-widest font-bold">Botanicals Collection</span>
+              </div>
+              <span className="text-zinc-500 text-[4px] sm:text-[7px] font-bold tracking-tighter">120 Grm</span>
+            </div>
+          </div>
+          
+          {/* Vertical Highlight for Realism */}
+          <div className="absolute inset-y-0 left-1/4 w-8 bg-gradient-to-r from-white/30 to-transparent blur-md" />
+        </div>
+
+        {/* Realistic Contact Shadow */}
+        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[85%] h-4 bg-black/15 blur-xl rounded-full -z-10" />
+      </div>
+    </div>
+  );
+
   return (
-    <section className="relative pt-28 pb-16 lg:pt-48 lg:pb-32 overflow-hidden bg-brand-ivory/30">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10">
+    <section className="relative pt-28 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
+      {/* Serene Wellness Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <img 
+          src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2000" 
+          alt="Wellness Background" 
+          className="w-full h-full object-cover opacity-30"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-ivory via-brand-ivory/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-ivory/20 via-transparent to-brand-ivory/40" />
+      </div>
+
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-moss rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-brown rounded-full blur-3xl animate-pulse delay-700" />
       </div>
@@ -69,9 +139,6 @@ const Hero = () => {
             <h1 className="text-3xl md:text-6xl lg:text-7xl font-serif font-extrabold text-brand-moss mb-6 leading-tight uppercase">
               {PRODUCT_NAME}
             </h1>
-            <p className="max-w-xl mx-auto lg:mx-0 text-base md:text-lg text-brand-moss/80 mb-10 leading-relaxed font-light">
-              Unge y absorbe el exceso de grasa. Combate barros y espinillas. Por su alta concentración mineral, nutre tu piel dejándola siempre bella.
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a 
                 href="https://wa.me/584245048325?text=Hola!%20Deseo%20una%20asesoría%20de%20belleza%20y%20conocer%20más%20de%20la%20mascarilla" 
@@ -95,7 +162,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="w-full lg:flex-1 relative mt-8 lg:mt-0"
           >
-            <div className="relative w-full h-[30rem] sm:h-[36rem] lg:h-[40rem] mx-auto group">
+            <div className="relative w-full h-[30rem] sm:h-[36rem] lg:h-[45rem] mx-auto group">
               {/* Spa Environment Background */}
               <div className="absolute inset-0 bg-[#fdfbf7] rounded-[4rem] shadow-2xl overflow-hidden border-8 border-white/50 z-0">
                 <img 
@@ -111,117 +178,66 @@ const Hero = () => {
                 <div className="absolute -left-10 top-0 w-80 h-full bg-white/60 blur-[100px] -rotate-12" />
                 
                 {/* Background Towels (Visual Simulation) */}
-                <div className="absolute -right-10 top-20 w-48 h-32 bg-white rounded-xl shadow-lg rotate-12 opacity-60 blur-[2px]" />
-                <div className="absolute -right-5 top-28 w-48 h-32 bg-white rounded-xl shadow-lg rotate-6 opacity-40 blur-[4px]" />
+                <div className="absolute -right-10 top-20 w-64 h-48 bg-white rounded-2xl shadow-lg rotate-12 opacity-60 blur-[2px] flex items-center justify-center">
+                   <div className="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')] opacity-10" />
+                </div>
+                <div className="absolute -right-5 top-32 w-64 h-48 bg-white rounded-2xl shadow-lg rotate-6 opacity-40 blur-[4px]" />
               </div>
 
-              {/* Marble Base (Cream and Gold tones) */}
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[95%] h-36 bg-gradient-to-br from-[#fdfbf7] via-[#f5e6d3] to-[#d4c3a3] rounded-[100%] shadow-2xl border-b-8 border-[#c4b393]/50 overflow-hidden transform rotate-x-60 z-10">
-                <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/marble-white.png')]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+              {/* Marble Base (Circular, Beige/Brown tones) */}
+              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-[95%] h-48 bg-gradient-to-br from-[#fdfbf7] via-[#e5d3b3] to-[#c4a383] rounded-[100%] shadow-2xl border-b-8 border-[#b49373]/50 overflow-hidden transform rotate-x-60 z-10">
+                <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/marble-white.png')]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                
+                {/* Final Logo Detail on Marble */}
+                <div className="absolute bottom-10 right-20 text-right opacity-40 transform -rotate-x-60">
+                  <span className="font-cursive text-brand-gold text-2xl">Termales</span>
+                  <p className="text-[8px] text-brand-moss uppercase tracking-[0.4em] font-bold">Botanicals Collection</p>
+                </div>
               </div>
 
-              {/* The Product Jars (Realistic CSS Implementation) */}
-              <div className="absolute inset-0 flex items-center justify-center gap-2 sm:gap-6 md:gap-12 pb-8 sm:pb-16 z-20">
-                {[1, 2].map((i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ rotateY: i === 1 ? -15 : 15, y: i === 1 ? -10 : 10 }}
-                    whileHover={{ scale: 1.05, rotateY: i === 1 ? -5 : 5, y: i === 1 ? -20 : 20 }}
-                    className={`relative w-32 h-40 sm:w-64 sm:h-72 md:w-80 md:h-88 transition-all duration-700`}
-                    style={{ perspective: '1000px' }}
-                  >
-                    {/* Jar Body (Cylindrical, Robust, White Matte) */}
-                    <div 
-                      className="absolute inset-0 bg-[#FDFDFD] rounded-[2rem] sm:rounded-[3rem] shadow-[inset_-10px_0_20px_rgba(0,0,0,0.05),inset_10px_0_20px_rgba(255,255,255,0.8),0_20px_40px_rgba(0,0,0,0.15)] overflow-hidden border border-zinc-100"
-                      style={{ transform: i === 1 ? 'rotateY(-10deg)' : 'rotateY(10deg)' }}
-                    >
-                      
-                      {/* Side Lighting Highlight */}
-                      <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white/80 to-transparent opacity-50" />
-                      
-                      {/* Label (Dark Moss Green #4A5E4D, Cracked Clay Texture) */}
-                      <div className="absolute inset-x-0 top-[55%] -translate-y-1/2 h-[65%] bg-[#4A5E4D] border-y border-[#3A4E3D] flex flex-col p-4 sm:p-6 md:p-8 text-left overflow-hidden shadow-inner">
-                        {/* Subtle Cracked Clay Texture Overlay */}
-                        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
-                        
-                        {/* Logo & Collection */}
-                        <div className="mb-2 sm:mb-4">
-                          <span className="font-cursive text-[#D4AF37] text-xl sm:text-2xl md:text-3xl leading-none block drop-shadow-sm">Termales</span>
-                          <p className="text-[6px] sm:text-[8px] md:text-[10px] text-white/80 uppercase tracking-[0.2em] font-light">Termal Botanic Ritual</p>
-                        </div>
-
-                        {/* Main Title */}
-                        <h4 className="text-[#F7F3E0] text-xs sm:text-base md:text-xl font-serif font-bold uppercase tracking-widest leading-tight mb-1">
-                          Mascarilla Facial
-                        </h4>
-                        
-                        {/* Subtitle */}
-                        <p className="text-[#D4AF37] text-[8px] sm:text-[10px] md:text-xs font-medium italic mb-2 sm:mb-4">
-                          línea exfoliante - Lodo
-                        </p>
-
-                        {/* Benefits */}
-                        <p className="text-white text-[5px] sm:text-[7px] md:text-[9px] leading-relaxed font-light max-w-[85%]">
-                          Aplica y absorbe el exceso de grasa. Combate barros y espinillas. Por su alta concentración mineral, nutre tu piel dejándola siempre bella.
-                        </p>
-
-                        {/* 120 Grs Seal (Circular, Cream/Gold) */}
-                        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-[#F7F3E0] border-2 border-[#D4AF37] flex items-center justify-center shadow-lg transform rotate-12">
-                          <span className="text-[#4A5E4D] font-bold text-[6px] sm:text-[8px] md:text-[10px]">120 Grs</span>
-                        </div>
-                      </div>
-
-                      {/* Bottom Shadow/Depth */}
-                      <div className="absolute bottom-0 inset-x-0 h-8 bg-gradient-to-t from-black/5 to-transparent" />
-                    </div>
-
-                    {/* Cap (Black/Dark Matte, Screw Cap) */}
-                    <div className="absolute -top-2 inset-x-4 h-10 sm:h-14 md:h-16 bg-[#1A1A1A] rounded-t-2xl sm:rounded-t-3xl shadow-xl border-b-4 border-black/20 flex flex-col justify-center px-2">
-                      {/* Screw Ridges */}
-                      <div className="w-full h-full flex justify-around items-center opacity-20">
-                        {[...Array(12)].map((_, idx) => (
-                          <div key={idx} className="w-[1px] h-full bg-white/30" />
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Soft Shadow on Base */}
-                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-8 bg-black/20 blur-2xl rounded-full -z-10" />
-                  </motion.div>
-                ))}
+              {/* The Two Product Jars */}
+              <div className="absolute inset-0 flex items-center justify-center gap-4 sm:gap-12 pb-16 z-20">
+                <Jar className="translate-x-4 sm:translate-x-8 -translate-y-4" />
+                <Jar className="-translate-x-4 sm:-translate-x-8 translate-y-4" />
               </div>
 
               {/* Accessories */}
               {/* Polished River Stones */}
-              <div className="absolute bottom-24 left-1/4 w-14 h-10 bg-zinc-800 rounded-full blur-[0.5px] shadow-xl opacity-90" />
-              <div className="absolute bottom-28 right-1/4 w-10 h-8 bg-zinc-900 rounded-full blur-[0.5px] shadow-xl opacity-95" />
-              <div className="absolute bottom-20 left-[45%] w-8 h-6 bg-zinc-700 rounded-full blur-[1px] shadow-lg opacity-80" />
+              <div className="absolute bottom-24 left-1/4 w-16 h-12 bg-zinc-800 rounded-full blur-[0.5px] shadow-xl opacity-90 rotate-12" />
+              <div className="absolute bottom-28 right-1/3 w-12 h-10 bg-zinc-900 rounded-full blur-[0.5px] shadow-xl opacity-95 -rotate-12" />
+              <div className="absolute bottom-20 left-[40%] w-10 h-8 bg-zinc-700 rounded-full blur-[1px] shadow-lg opacity-80" />
               
+              {/* Silver Spoon (Front) */}
+              <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-32 h-3 bg-gradient-to-r from-zinc-300 via-white to-zinc-400 rounded-full shadow-md z-30 rotate-3 border-b border-black/10">
+                <div className="absolute -left-2 -top-1 w-8 h-5 bg-gradient-to-br from-zinc-200 to-zinc-400 rounded-full shadow-inner" />
+              </div>
+
               {/* Lavender and Green Leaves */}
-              <div className="absolute bottom-12 left-12 w-28 h-28 text-brand-moss opacity-50 rotate-12">
+              <div className="absolute bottom-12 left-8 w-32 h-32 text-brand-moss opacity-40 rotate-12 z-30">
                 <Leaf className="w-full h-full" />
               </div>
-              <div className="absolute bottom-16 left-20 w-12 h-12 text-purple-400/40 -rotate-12">
+              <div className="absolute bottom-16 left-16 w-16 h-16 text-purple-400/50 -rotate-12 z-30">
                 <Sparkles className="w-full h-full" />
-              </div>
-              <div className="absolute top-24 right-16 w-20 h-20 text-brand-gold/20 -rotate-45">
-                <Sparkles className="w-full h-full" />
+                {/* Lavender simulation */}
+                <div className="absolute inset-0 flex flex-col gap-1 items-center">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="w-2 h-2 bg-purple-500 rounded-full blur-[1px]" style={{ opacity: 0.6 - i * 0.1 }} />
+                  ))}
+                </div>
               </div>
 
-              {/* Mud Bowl (Artisanal concept) */}
-              <div className="absolute bottom-20 right-16 w-24 h-24 bg-white/40 rounded-full border-4 border-white/60 backdrop-blur-md shadow-2xl flex items-center justify-center">
-                <div className="w-18 h-18 bg-brand-moss/90 rounded-full shadow-inner relative overflow-hidden">
-                   <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
+              {/* Glass Bowl with Mud (Right) - Refined to look like Mud, not Avocado */}
+              <div className="absolute bottom-24 right-12 w-28 h-28 bg-white/10 rounded-full border-2 border-white/30 backdrop-blur-md shadow-2xl flex items-center justify-center z-30">
+                <div className="w-22 h-22 bg-[#2C2C2C] rounded-full shadow-inner relative overflow-hidden">
+                   <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-white/10" />
+                   {/* Mud Texture */}
+                   <div className="absolute inset-0 opacity-40 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
+                   {/* Wet Mud Highlight */}
+                   <div className="absolute top-4 left-4 w-8 h-4 bg-white/10 blur-md rounded-full rotate-45" />
                 </div>
                 {/* Wooden Spoon */}
-                <div className="absolute -bottom-2 -right-4 w-20 h-4 bg-[#8b5a2b] rounded-full shadow-md transform -rotate-45 border-b-2 border-black/20" />
-              </div>
-
-              {/* Final Logo Detail (Discreet on Marble) */}
-              <div className="absolute bottom-8 right-16 text-right opacity-50">
-                <span className="font-cursive text-brand-gold text-xl">Termales</span>
-                <p className="text-[7px] text-brand-moss uppercase tracking-[0.4em]">Termal Botanic Ritual</p>
+                <div className="absolute -bottom-4 -right-2 w-24 h-5 bg-[#6B4423] rounded-full shadow-md transform -rotate-45 border-b-2 border-black/30" />
               </div>
             </div>
           </motion.div>
@@ -233,6 +249,15 @@ const Hero = () => {
 
 const OriginSection = () => (
   <section className="py-24 bg-brand-ivory relative overflow-hidden">
+    {/* Subtle Water Ripples Background */}
+    <div className="absolute inset-0 opacity-10 pointer-events-none">
+      <img 
+        src="https://images.unsplash.com/photo-1591343395582-99bf4eb46a44?auto=format&fit=crop&q=80&w=2000" 
+        alt="Water Ripples" 
+        className="w-full h-full object-cover"
+        referrerPolicy="no-referrer"
+      />
+    </div>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div
@@ -461,8 +486,17 @@ const InteractiveGuide = () => {
 };
 
 const Pricing = ({ onOpenGuide }: { onOpenGuide: (type: 'pdf' | 'video') => void }) => (
-  <section id="precios" className="py-24 bg-white">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="precios" className="py-24 bg-white relative overflow-hidden">
+    {/* Serene Spa Background for Pricing */}
+    <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+      <img 
+        src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=2000" 
+        alt="Spa Background" 
+        className="w-full h-full object-cover"
+        referrerPolicy="no-referrer"
+      />
+    </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-moss mb-4 tracking-widest uppercase">Rituales de Belleza</h2>
         <p className="text-brand-moss/60 max-w-2xl mx-auto font-light">
@@ -723,7 +757,17 @@ export default function App() {
   const [activeGuide, setActiveGuide] = useState<'pdf' | 'video' | null>(null);
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-brand-gold selection:text-brand-moss">
+    <div className="min-h-screen bg-brand-ivory/20 font-sans selection:bg-brand-gold selection:text-brand-moss relative">
+      {/* Global Subtle Wellness Texture/Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-multiply">
+        <img 
+          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=2000" 
+          alt="Global Texture" 
+          className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+      
       <Navbar />
       <main>
         <Hero />
